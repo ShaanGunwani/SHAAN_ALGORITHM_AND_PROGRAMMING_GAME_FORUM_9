@@ -118,23 +118,17 @@ class AlienInvasion:
     def _ship_hit(self):
         """Respond to the ship being hit by an alien."""
         if self.stats.ships_left > 0:
-            # Decrement ships_left.
             self.stats.ships_left -= 1
-            
-           
             self.aliens.empty()
             self.bullets.empty()
-           
             self._create_fleet()
             self.ship.center_ship()
-            
             sleep(0.5)
         else:
             self.stats.game_active = False
 
     def _create_fleet(self):
         """Create the fleet of aliens.""
-        
         alien = Alien(self)
         alien_width, alien_height = alien.rect.size
         available_space_x = self.settings.screen_width - (2 * alien_width)
